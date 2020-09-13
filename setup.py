@@ -88,7 +88,14 @@ setup(
             "sphinx>=3.2",
             "sphinx_rtd_theme>=0.5",
         ],
-        "test": ["pytest-cov", "black", "doc8", "pylint>=2.6", "panflute>=1.12"],
+        "test": [
+            "pytest-runner",
+            "pytest-cov",
+            "black",
+            "doc8",
+            "pylint>=2.6",
+            "panflute>=1.12",
+        ],
     },
     # If there are data files included in your packages that need to be
     # installed, specify them HERE.  If using Python 2.6 or less, then these
