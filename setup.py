@@ -89,6 +89,7 @@ setup(
             "sphinx_rtd_theme>=0.5",
         ],
         "test": [
+            "tox",
             "pytest-runner",
             "pytest-cov",
             "black",
