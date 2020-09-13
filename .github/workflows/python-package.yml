@@ -44,6 +44,8 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
+        wget https://github.com/jgm/pandoc/releases/download/2.10.1/pandoc-2.10.1-1-amd64.deb
+        sudo dpkg -i  pandoc-2.10.1-1-amd64.deb
         python -m pip install --upgrade pip
         pip install setuptools coveralls .[test]
     - name: Test
