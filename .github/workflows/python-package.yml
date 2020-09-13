@@ -50,5 +50,5 @@ jobs:
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
       run: |
-        coverage run --source=part setup.py test
+        coverage run --source=pandoc_beamer_multigraphics setup.py test
         coveralls
