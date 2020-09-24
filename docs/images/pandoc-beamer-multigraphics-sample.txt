@@ -1,0 +1,10 @@
+---
+pandoc-beamer-multigraphics:
+  - classes: [multigraphics]
+---
+The Tux junior image has been created by
+[Stephen Groundwater](https://opengameart.org/users/groundwater) under the
+[CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/) licence.
+
+![](Tux_junior){.multigraphics}
+
