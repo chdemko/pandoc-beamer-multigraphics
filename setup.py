@@ -6,14 +6,11 @@ https://github.com/chdemko/pandoc-beamer-multigraphics
 """
 
 # To use a consistent encoding
-from os import path
 
 # Always prefer setuptools over distutils
 from setuptools import setup
 
-HERE = path.abspath(path.dirname(__file__))
-
-with open(path.join(HERE, "README.md"), encoding="utf-8") as stream:
+with open("README.md", encoding="utf-8") as stream:
     LONG_DESCRIPTION = stream.read()
 
 setup(
@@ -21,7 +18,6 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version="0.1.0",
     # The project's description
     description="A pandoc filter for adding beamer multigraphics ability",
     long_description=LONG_DESCRIPTION,
@@ -57,6 +53,9 @@ setup(
         # Specify the Python versions you support HERE. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
         "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.9",
         # Natural language used
         "Natural Language :: English",
     ],
@@ -77,7 +76,7 @@ setup(
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=["panflute>=1.12"],
+    install_requires=["panflute>=2.0"],
     # List additional groups of dependencies HERE (e.g. development
     # dependencies). You can install these using the following syntax,
     # for example:
@@ -85,7 +84,7 @@ setup(
     extras_require={
         "dev": ["check-manifest"],
         "docs": [
-            "sphinx>=3.2",
+            "sphinx>=3.5",
             "sphinx_rtd_theme>=0.5",
         ],
         "test": [
@@ -95,7 +94,7 @@ setup(
             "black",
             "doc8",
             "pylint>=2.6",
-            "panflute>=1.12",
+            "panflute>=2.0",
         ],
     },
     # If there are data files included in your packages that need to be
