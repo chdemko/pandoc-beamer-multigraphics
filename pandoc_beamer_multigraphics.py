@@ -1,10 +1,16 @@
 #!/usr/bin/env python
 
 """
-Pandoc filter for using beamer multi-graphics ability
+Pandoc filter for using beamer multi-graphics ability.
 """
 
-from panflute import run_filter, Image, RawInline, MetaList, MetaInlines
+from panflute import (  # type: ignore
+    Image,
+    MetaInlines,
+    MetaList,
+    RawInline,
+    run_filter,
+)
 
 
 def image(elem, doc):
@@ -13,20 +19,22 @@ def image(elem, doc):
 
     Arguments
     ---------
-        elem:
-            current element
-        doc:
-            pandoc document
+    elem
+        current element
+    doc
+        pandoc document
+
+    Returns
+    -------
+        RawInline or None
     """
     if doc.format == "beamer" and isinstance(elem, Image):
         classes = frozenset(elem.classes)
 
-        # Loop on all multigraphics definition
+        # Loop on all multi-graphics definition
         for definition in doc.defined:
-
             # Are the classes correct?
             if classes >= definition["classes"]:
-
                 graphics = []
 
                 if (
@@ -55,19 +63,21 @@ def image(elem, doc):
                 options = []
 
                 if "start" in elem.attributes:
-                    options.append("start=%d" % int(elem.attributes["start"]))
+                    options.append(f"start={int(elem.attributes['start']):d}")
 
                 if "end" in elem.attributes:
-                    options.append("end=%d" % int(elem.attributes["end"]))
+                    options.append(f"end={int(elem.attributes['end']):d}")
 
                 options.append(
-                    "format=%s"
-                    % str(elem.attributes.get("format", definition["format"]))
+                    f"format={elem.attributes.get('format', definition['format'])}"
                 )
 
                 return RawInline(
-                    "\\multiinclude[graphics={%s},%s]{%s}"
-                    % (",".join(graphics), ",".join(options), elem.url),
+                    (
+                        f"\\multiinclude"
+                        f"[graphics={{{','.join(graphics)}}},{','.join(options)}]"
+                        f"{{{elem.url}}}"
+                    ),
                     "tex",
                 )
 
@@ -76,14 +86,13 @@ def image(elem, doc):
 
 def prepare(doc):
     """
-    Prepare the document
+    Prepare the document.
 
     Arguments
     ---------
-        doc:
-            The pandoc document
+    doc
+        The pandoc document
     """
-
     # Prepare the definitions
     doc.defined = []
 
@@ -91,10 +100,8 @@ def prepare(doc):
     meta = doc.get_metadata("pandoc-beamer-multigraphics")
 
     if isinstance(meta, list):
-
         # Loop on all definitions
         for definition in meta:
-
             # Verify the definition
             if (
                 isinstance(definition, dict)
@@ -113,12 +120,12 @@ def prepare(doc):
 
 def finalize(doc):
     """
-    Finalize the document
+    Finalize the document.
 
     Arguments
     ---------
-        doc:
-            The pandoc document
+    doc
+        The pandoc document
     """
     # Add header-includes if necessary
     if "header-includes" not in doc.metadata:
@@ -134,12 +141,16 @@ def finalize(doc):
 
 def main(doc=None):
     """
-    main function.
+    Transform the document.
 
     Arguments
     ---------
-        doc:
-            pandoc document
+    doc
+        pandoc document
+
+    Returns
+    -------
+        The transformed document.
     """
     return run_filter(image, doc=doc, prepare=prepare, finalize=finalize)
 
