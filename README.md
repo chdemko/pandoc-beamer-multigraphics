@@ -2,6 +2,7 @@
 
 [![Python package](https://github.com/chdemko/pandoc-beamer-multigraphics/workflows/Python%20package/badge.svg?branch=develop)](https://github.com/chdemko/pandoc-beamer-multigraphics/actions/workflows/python-package.yml)
 [![Coveralls](https://img.shields.io/coveralls/github/chdemko/pandoc-beamer-multigraphics/develop.svg?logo=Codecov&logoColor=white)](https://coveralls.io/github/chdemko/pandoc-beamer-multigraphics?branch=develop)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/chdemko/pandoc-beamer-multigraphics.svg?logo=scrutinizer)](https://scrutinizer-ci.com/g/chdemko/pandoc-beamer-multigraphics/)
 [![Code Climate](https://codeclimate.com/github/chdemko/pandoc-beamer-multigraphics/badges/gpa.svg)](https://codeclimate.com/github/chdemko/pandoc-beamer-multigraphics/)
 [![Code Beat](https://codebeat.co/badges/cb5538dc-f30b-4ac4-abf6-3c213682c54d)](https://codebeat.co/projects/github-com-chdemko-pandoc-beamer-multigraphics-develop/)
 [![Codacy](https://img.shields.io/codacy/grade/af5a670790264990811713280a8f8dcf.svg?logo=codacy&logoColor=white)](https://www.codacy.com/app/chdemko/pandoc-beamer-multigraphics)
