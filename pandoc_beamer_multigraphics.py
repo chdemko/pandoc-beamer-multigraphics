@@ -4,7 +4,7 @@
 Pandoc filter for using beamer multi-graphics ability.
 """
 
-from panflute import (  # type: ignore
+from panflute import (
     Image,
     MetaInlines,
     MetaList,
