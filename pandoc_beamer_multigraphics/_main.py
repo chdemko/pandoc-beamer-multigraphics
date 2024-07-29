@@ -5,6 +5,8 @@ Pandoc filter for using beamer multi-graphics ability.
 """
 
 from panflute import (
+    Doc,
+    Element,
     Image,
     MetaInlines,
     MetaList,
@@ -13,7 +15,7 @@ from panflute import (
 )
 
 
-def image(elem, doc):
+def image(elem: Element, doc: Doc) -> RawInline | None:
     """
     Transform image element.
 
@@ -26,6 +28,7 @@ def image(elem, doc):
 
     Returns
     -------
+    RawInline | None
         RawInline or None
     """
     if doc.format == "beamer" and isinstance(elem, Image):
@@ -35,7 +38,7 @@ def image(elem, doc):
         for definition in doc.defined:
             # Are the classes correct?
             if classes >= definition["classes"]:
-                graphics = []
+                graphics: list[str] = []
 
                 if (
                     "height" in elem.attributes
@@ -43,21 +46,21 @@ def image(elem, doc):
                     or "height" in definition
                     or "width" in definition
                 ):
-                    graphics.append(
-                        "height=%s"
-                        % str(
-                            elem.attributes.get(
-                                "height", definition.get("height", "\\textheight")
-                            )
-                        )
-                    )
-                    graphics.append(
-                        "width=%s"
-                        % str(
-                            elem.attributes.get(
-                                "width", definition.get("width", "\\textwidth")
-                            )
-                        )
+                    graphics.extend(
+                        (
+                            "height=%s"
+                            % str(
+                                elem.attributes.get(
+                                    "height", definition.get("height", "\\textheight")
+                                )
+                            ),
+                            "width=%s"
+                            % str(
+                                elem.attributes.get(
+                                    "width", definition.get("width", "\\textwidth")
+                                )
+                            ),
+                        ),
                     )
 
                 options = []
@@ -84,7 +87,7 @@ def image(elem, doc):
     return None
 
 
-def prepare(doc):
+def prepare(doc: Doc) -> None:
     """
     Prepare the document.
 
@@ -118,7 +121,7 @@ def prepare(doc):
                 doc.defined.append(definition)
 
 
-def finalize(doc):
+def finalize(doc: Doc) -> None:
     """
     Finalize the document.
 
@@ -139,7 +142,7 @@ def finalize(doc):
     )
 
 
-def main(doc=None):
+def main(doc: Doc | None = None) -> Doc:
     """
     Transform the document.
 
@@ -150,6 +153,7 @@ def main(doc=None):
 
     Returns
     -------
+    Doc
         The transformed document.
     """
     return run_filter(image, doc=doc, prepare=prepare, finalize=finalize)
