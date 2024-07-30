@@ -96,7 +96,7 @@ Sphinx = "^7.4.7"
 sphinx-rtd-theme = "^2.0.0"
 
 [tool.poetry.scripts]
-pandoc-beamer-block = "pandoc_beamer_block:main"
+pandoc-beamer-block = "pandoc_beamer_multigraphics:main"
 
 [tool.flake8]
 # flake8-docstrings
