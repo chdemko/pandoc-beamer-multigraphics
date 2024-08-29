@@ -3,9 +3,9 @@ Usage
 
 To apply the filter, use the following option with pandoc:
 
-.. prompt:: bash
+.. code-block:: shell-session
 
-    pandoc --filter pandoc-beamer-multigraphics
+    $ pandoc --filter pandoc-beamer-multigraphics
 
 Explanation
 -----------
@@ -72,9 +72,9 @@ has been created by
 `CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>`_ licence.
 
 
-.. prompt:: bash
+.. code-block:: shell-session
 
-    pandoc \
+    $ pandoc \
         -t beamer \
         -V theme:Warsaw \
         --filter pandoc-beamer-multigraphics \
