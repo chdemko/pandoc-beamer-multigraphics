@@ -78,8 +78,7 @@ pandoc-beamer-multigraphics:
         )
         self.assertEqual(
             text,
-            r"\multiinclude[graphics={height=20cm,width=\textwidth},format=png]"
-            r"{myimage}",
+            r"\multiinclude[graphics={height=20cm},format=png]" r"{myimage}",
         )
 
     def test_meta2(self):
@@ -103,6 +102,5 @@ pandoc-beamer-multigraphics:
         )
         self.assertEqual(
             text,
-            r"\multiinclude[graphics={height=\textheight,width=20cm},format=png]"
-            r"{myimage}",
+            r"\multiinclude[graphics={width=20cm},format=png]" r"{myimage}",
         )
