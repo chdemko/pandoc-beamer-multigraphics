@@ -9,6 +9,7 @@ description = "A pandoc filter for adding muti graphics elements in Beamer"
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
 license = "BSD-3-Clause"
+license-files = {paths = ["LICENSE"]}
 authors = [{name = "Christophe Demko", email = "chdemko@gmail.com"}]
 maintainers = [{name = "Christophe Demko", email = "chdemko@gmail.com"}]
 keywords = ["pandoc", "filters", "graphics", "latex", "beamer"]

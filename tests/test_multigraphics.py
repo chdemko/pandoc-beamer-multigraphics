@@ -1,20 +1,53 @@
+"""Test module."""
 from unittest import TestCase
 
-from panflute import convert_text, Para, Image
+from panflute import convert_text
 
 import pandoc_beamer_multigraphics
 
 
 class MultiGraphicsTest(TestCase):
-    @classmethod
-    def conversion(cls, markdown, fmt="markdown"):
-        doc = convert_text(markdown, standalone=True)
-        doc.format = fmt
-        pandoc_beamer_multigraphics.main(doc)
-        return doc
+    def verify_conversion(
+        self,
+        text,
+        expected,
+        transform,
+        input_format="markdown",
+        output_format="latex",
+        standalone=False,  # noqa: FBT002
+    ) -> None:
+        """
+        Verify the conversion.
+
+        Parameters
+        ----------
+        text
+            input text
+        expected
+            expected text
+        transform
+            filter function
+        input_format
+            input format
+        output_format
+            output format
+        standalone
+            is the output format standalone ?
+        """
+        doc = convert_text(text, input_format=input_format, standalone=True)
+        doc.format = output_format
+        doc = transform(doc)
+        converted = convert_text(
+            doc.content,
+            input_format="panflute",
+            output_format=output_format,
+            extra_args=["--wrap=none"],
+            standalone=standalone,
+        )
+        self.assertEqual(converted.strip(), expected.strip())  # noqa: PT009
 
     def test_simple(self):
-        doc = MultiGraphicsTest.conversion(
+        self.verify_conversion(
             """
 ---
 pandoc-beamer-multigraphics:
@@ -22,21 +55,17 @@ pandoc-beamer-multigraphics:
 ---
 ![](myimage){.multigraphics}
             """,
-            "beamer",
-        )
-        text = convert_text(
-            doc,
-            input_format="panflute",
-            output_format="latex",
-            extra_args=["--wrap=none"],
-        )
-        self.assertEqual(
-            text,
-            r"\multiinclude[graphics={},format=pdf]{myimage}",
+            """
+\\begin{frame}
+\\multiinclude[graphics={},format=pdf]{myimage}
+\\end{frame}
+            """,
+            pandoc_beamer_multigraphics.main,
+            output_format="beamer",
         )
 
     def test_complete(self):
-        doc = MultiGraphicsTest.conversion(
+        self.verify_conversion(
             """
 ---
 pandoc-beamer-multigraphics:
@@ -44,21 +73,17 @@ pandoc-beamer-multigraphics:
 ---
 ![](myimage){.multigraphics start=1 end=3}
             """,
-            "beamer",
-        )
-        text = convert_text(
-            doc,
-            input_format="panflute",
-            output_format="latex",
-            extra_args=["--wrap=none"],
-        )
-        self.assertEqual(
-            text,
-            r"\multiinclude[graphics={},start=1,end=3,format=pdf]{myimage}",
+            """
+\\begin{frame}
+\\multiinclude[graphics={},start=1,end=3,format=pdf]{myimage}
+\\end{frame}
+            """,
+            pandoc_beamer_multigraphics.main,
+            output_format="beamer",
         )
 
     def test_meta1(self):
-        doc = MultiGraphicsTest.conversion(
+        self.verify_conversion(
             """
 ---
 pandoc-beamer-multigraphics:
@@ -68,21 +93,17 @@ pandoc-beamer-multigraphics:
 ---
 ![](myimage){.multigraphics}
             """,
-            "beamer",
-        )
-        text = convert_text(
-            doc,
-            input_format="panflute",
-            output_format="latex",
-            extra_args=["--wrap=none"],
-        )
-        self.assertEqual(
-            text,
-            r"\multiinclude[graphics={height=20cm},format=png]" r"{myimage}",
+            """
+\\begin{frame}
+\\multiinclude[graphics={height=20cm},format=png]{myimage}
+\\end{frame}
+            """,
+            pandoc_beamer_multigraphics.main,
+            output_format="beamer",
         )
 
     def test_meta2(self):
-        doc = MultiGraphicsTest.conversion(
+        self.verify_conversion(
             """
 ---
 pandoc-beamer-multigraphics:
@@ -92,15 +113,11 @@ pandoc-beamer-multigraphics:
 ---
 ![](myimage){.multigraphics}
             """,
-            "beamer",
-        )
-        text = convert_text(
-            doc,
-            input_format="panflute",
-            output_format="latex",
-            extra_args=["--wrap=none"],
-        )
-        self.assertEqual(
-            text,
-            r"\multiinclude[graphics={width=20cm},format=png]" r"{myimage}",
+            """
+\\begin{frame}
+\\multiinclude[graphics={width=20cm},format=png]{myimage}
+\\end{frame}
+            """,
+            pandoc_beamer_multigraphics.main,
+            output_format="beamer",
         )
