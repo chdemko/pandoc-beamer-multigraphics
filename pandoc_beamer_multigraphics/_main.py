@@ -3,6 +3,7 @@
 """
 Pandoc filter for using beamer multi-graphics ability.
 """
+from __future__ import annotations
 
 from panflute import (
     Doc,
