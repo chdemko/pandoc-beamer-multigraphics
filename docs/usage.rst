@@ -3,9 +3,9 @@ Usage
 
 To apply the filter, use the following option with pandoc:
 
-.. prompt:: bash
+.. code-block:: shell-session
 
-    pandoc --filter pandoc-beamer-multigraphics
+    $ pandoc --filter pandoc-beamer-multigraphics
 
 Explanation
 -----------
@@ -26,7 +26,7 @@ entry by a list of definitions:
 
 The metadata block above is used to use multi-images ability for image elements
 which have ``multigraphics`` class. The format used will be ``pdf`` and the
-width will be ``\textwidth``.
+width will be ``10cm``.
 
 Each entry of ``pandoc-beamer-multigraphics`` is a YAML dictionary
 containing:
@@ -39,7 +39,7 @@ containing:
 -  ``start``: the starting number (0 by default)
 -  ``end``: the ending number (infinity by default)
 
-It's also possible to set the paramters for each image using the pandoc
+It's also possible to set the parameters for each image using the pandoc
 attribute notation.
 
 Example
@@ -72,9 +72,9 @@ has been created by
 `CC BY-SA 3.0 <http://creativecommons.org/licenses/by-sa/3.0/>`_ licence.
 
 
-.. prompt:: bash
+.. code-block:: shell-session
 
-    pandoc \
+    $ pandoc \
         -t beamer \
         -V theme:Warsaw \
         --filter pandoc-beamer-multigraphics \

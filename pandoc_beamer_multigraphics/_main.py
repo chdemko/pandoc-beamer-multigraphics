@@ -40,28 +40,15 @@ def image(elem: Element, doc: Doc) -> RawInline | None:
             if classes >= definition["classes"]:
                 graphics: list[str] = []
 
-                if (
-                    "height" in elem.attributes
-                    or "width" in elem.attributes
-                    or "height" in definition
-                    or "width" in definition
-                ):
-                    graphics.extend(
-                        (
-                            "height=%s"
-                            % str(
-                                elem.attributes.get(
-                                    "height", definition.get("height", "\\textheight")
-                                )
-                            ),
-                            "width=%s"
-                            % str(
-                                elem.attributes.get(
-                                    "width", definition.get("width", "\\textwidth")
-                                )
-                            ),
-                        ),
-                    )
+                if "height" in elem.attributes:
+                    graphics.append(f"height={elem.attributes['height']}")
+                elif "height" in definition:
+                    graphics.append(f"height={definition['height']}")
+
+                if "width" in elem.attributes:
+                    graphics.append(f"width={elem.attributes['width']}")
+                elif "width" in definition:
+                    graphics.append(f"width={definition['width']}")
 
                 options = []
 
