@@ -63,3 +63,34 @@ welcome to [file an issue] on github so that we can help.
 
 [file an issue]: https://github.com/chdemko/pandoc-beamer-multigraphics/issues
 
+Contribute
+==========
+
+Instructions
+------------
+
+Install `hatch`, then run
+
+~~~shell-session
+$ hatch run pip install pre-commit
+$ hatch run pre-commit install
+~~~
+
+to install `pre-commit` before working on your changes.
+
+Tests
+-----
+
+When your changes are ready, run
+
+~~~shell-session
+$ hatch test
+$ hatch fmt --check
+$ hatch run dynamic-lint:check
+$ hatch run docs:build
+$ hatch build -t wheel
+~~~
+
+for running the tests, checking the style, building the documentation
+and building the wheel.
+
