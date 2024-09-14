@@ -16,7 +16,7 @@ Installation
 [![Downloads](https://img.shields.io/pypi/dm/pandoc-numbering?logo=pypi&logoColor=white)](https://pepy.tech/project/pandoc-beamer-multigraphics)
 [![Development Status](https://img.shields.io/pypi/status/pandoc-beamer-multigraphics.svg?pypi&logoColor=white)](https://pypi.org/project/pandoc-beamer-multigraphics/)
 [![Python version](https://img.shields.io/pypi/pyversions/pandoc-beamer-multigraphics.svg?logo=Python&logoColor=white)](https://pypi.org/project/pandoc-beamer-multigraphics/)
-[![Pandoc version](https://img.shields.io/badge/pandoc-2.11%20|%202.12%20|%202.13%20|%202.14%20|%202.15%20|%202.16%20|%202.17%20|%202.18%20|%202.19%20|%203.0%20|%203.1%20|%203.2%20|%203.3-blue.svg?logo=markdown)](https://pandoc.org/)
+[![Pandoc version](https://img.shields.io/badge/pandoc-2.11%20|%202.12%20|%202.13%20|%202.14%20|%202.15%20|%202.16%20|%202.17%20|%202.18%20|%202.19%20|%203.0%20|%203.1%20|%203.2%20|%203.3%20|%203.4-blue.svg?logo=markdown)](https://pandoc.org/)
 [![Latest release](https://img.shields.io/github/release-date/chdemko/pandoc-beamer-multigraphics.svg?logo=github)](https://github.com/chdemko/pandoc-beamer-multigraphics/releases)
 [![Last commit](https://img.shields.io/github/last-commit/chdemko/pandoc-beamer-multigraphics/develop?logo=github)](https://github.com/chdemko/pandoc-beamer-multigraphics/commit/develop/)
 [![Repo Size](https://img.shields.io/github/repo-size/chdemko/pandoc-beamer-multigraphics.svg?logo=github)](http://pandoc-beamer-multigraphics.readthedocs.io/en/latest/)
