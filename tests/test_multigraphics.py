@@ -57,7 +57,7 @@ pandoc-beamer-multigraphics:
             """,
             """
 \\begin{frame}
-\\multiinclude[graphics={},format=pdf]{myimage}
+\\multiinclude[<+->][graphics={},format=pdf]{myimage}
 \\end{frame}
             """,
             pandoc_beamer_multigraphics.main,
@@ -75,7 +75,7 @@ pandoc-beamer-multigraphics:
             """,
             """
 \\begin{frame}
-\\multiinclude[graphics={},start=1,end=3,format=pdf]{myimage}
+\\multiinclude[<+->][graphics={},start=1,end=3,format=pdf]{myimage}
 \\end{frame}
             """,
             pandoc_beamer_multigraphics.main,
@@ -95,7 +95,7 @@ pandoc-beamer-multigraphics:
             """,
             """
 \\begin{frame}
-\\multiinclude[graphics={height=20cm},format=png]{myimage}
+\\multiinclude[<+->][graphics={height=20cm},format=png]{myimage}
 \\end{frame}
             """,
             pandoc_beamer_multigraphics.main,
@@ -115,7 +115,7 @@ pandoc-beamer-multigraphics:
             """,
             """
 \\begin{frame}
-\\multiinclude[graphics={width=20cm},format=png]{myimage}
+\\multiinclude[<+->][graphics={width=20cm},format=png]{myimage}
 \\end{frame}
             """,
             pandoc_beamer_multigraphics.main,
