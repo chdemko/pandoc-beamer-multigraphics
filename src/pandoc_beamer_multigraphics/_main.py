@@ -65,7 +65,7 @@ def image(elem: Element, doc: Doc) -> RawInline | None:
 
                 return RawInline(
                     (
-                        f"\\multiinclude"
+                        f"\\multiinclude[<+->]"
                         f"[graphics={{{','.join(graphics)}}},{','.join(options)}]"
                         f"{{{elem.url}}}"
                     ),
